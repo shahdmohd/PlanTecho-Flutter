@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/SigningPages/Confirmpopup.dart';
 import 'package:graduation_project/SigningPages/Errorpopup.dart';
-import 'package:graduation_project/SigningPages/Login.dart';
+import 'package:graduation_project/SigningPages/LoginScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

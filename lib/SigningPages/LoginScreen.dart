@@ -4,9 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/SigningPages/Confirmpopup.dart';
 import 'package:graduation_project/SigningPages/Errorpopup.dart';
-import 'package:graduation_project/SigningPages/ResetPassword.dart';
 import 'package:graduation_project/SigningPages/SignUp.dart';
 import 'package:graduation_project/SigningPages/VerificationScreen.dart';
+import 'package:graduation_project/SigningPages/ForgetPassword.dart'; // Import the ForgetPassword widget
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -89,89 +89,7 @@ class _LoginScreen extends State<LoginScreen> {
                       const SizedBox(height: 20),
                       // Sign In Button
                       ElevatedButton(
-                        onPressed: ()
-                        // async {
-                        //   try {
-                        //     // Attempt to sign in with Firebase Authentication
-                        //     // UserCredential userCredential = await FirebaseAuth
-                        //     //     .instance
-                        //     //     .signInWithEmailAndPassword(
-                        //     //       email: usernameController.text,
-                        //     //       password: passwordController.text,
-                        //     //     );
-                        //     // If successful, navigate to the Home Page
-                        //     // Now, check if the email is verified from Firestore
-                        //     // DocumentSnapshot userDoc =
-                        //     //     await FirebaseFirestore.instance
-                        //     //         .collection(
-                        //     //           'users',
-                        //     //         ) // Your Firestore collection name
-                        //     //         .doc(
-                        //     //           userCredential.user!.uid,
-                        //     //         ) // Get the user's UID from Firebase Auth
-                        //     //         .get();
-                        //   //   if (userDoc.exists) {
-                        //   //     // Check the 'isVerify' field in Firestore
-                        //   //     bool isVerified = userDoc['isVerify'] ?? false;
-                        //   //     if (isVerified) {
-                        //   //       // If the user is verified, navigate to the HomePage
-                        //   //       Navigator.push(
-                        //   //         context,
-                        //   //         MaterialPageRoute(
-                        //   //           builder:
-                        //   //               (context) => DashboardPage(
-                        //   //                 diagnoses: [],
-                        //   //               ), // Replace HomePage with your actual home widget
-                        //   //         ),
-                        //   //       );
-                        //   //     } else {
-                        //   //       // If the user is not verified, navigate to the KIP page
-                        //   //       _showDoneDialog(
-                        //   //         context,
-                        //   //         "Success",
-                        //   //         "You have successfully signed in",
-                        //   //       );
-                        //   //       Navigator.push(
-                        //   //         context,
-                        //   //         MaterialPageRoute(
-                        //   //           builder:
-                        //   //               (context) => VerificationScreen(
-                        //   //                 email: usernameController.text,
-                        //   //               ),
-                        //   //         ), // Replace HomePage with your actual home widget
-                        //   //       );
-                        //   //     }
-                        //   //   }
-                        //   // } catch (e) {
-                        //     // Show an alert if there is an error (e.g., wrong credentials)
-                        //     bool dialogOpen = true;
-                        //     // Show the dialog
-                        //     showDialog(
-                        //       context: context,
-                        //       builder:
-                        //           (context) => ErrorMessagePopup(
-                        //             title: "failed to Sign in",
-                        //             description:
-                        //                 "User name or password is incorrect",
-                        //           ),
-                        //     ).then((_) {
-                        //       // When the dialog is dismissed manually, set dialogOpen to false
-                        //       dialogOpen = false;
-                        //     });
-                        //     // Dismiss the dialog automatically after 1.5 seconds
-                        //     Future.delayed(
-                        //       const Duration(seconds: 1, milliseconds: 500),
-                        //       () {
-                        //         if (dialogOpen) {
-                        //           Navigator.of(
-                        //             context,
-                        //           ).pop(); // Dismiss the dialog only if still open
-                        //         }
-                        //       },
-                        //     );
-                        //   }
-                        // },
-                        {
+                        onPressed: () {
                           Navigator.push(
                             context,
                             _createPageRoute(SignUpScreen()),
@@ -200,7 +118,7 @@ class _LoginScreen extends State<LoginScreen> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            _createPageRoute(ResetPassword()),
+                            _createPageRoute(ForgetPasswordWidget()), // Use the ForgetPasswordWidget here
                           );
                         },
                         child: const Text(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:graduation_project/HomeScreens/AITools.dart';
+import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
 import 'package:graduation_project/PlantData/PlantManagementDashboard.dart';
+import 'package:graduation_project/HomeScreens/chatbot.dart'; // Make sure this import is correct
 
 class HomePageMainWidget extends StatefulWidget {
   const HomePageMainWidget({super.key});
@@ -73,45 +74,45 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
             // Search Bar
             Padding(
                padding: const EdgeInsets.all(16.0),
-        child: TextFormField(
-          decoration: InputDecoration(
-            labelText: 'Search',
-            labelStyle: GoogleFonts.inter(),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.transparent,
-                width: 1,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Search',
+                  labelStyle: GoogleFonts.inter(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  filled: true,
+                  fillColor: const Color(0xFFCCF1CC),
+                ),
+                style: GoogleFonts.inter(),
+                cursorColor: Theme.of(context).textTheme.bodyLarge?.color,
               ),
-              borderRadius: BorderRadius.circular(20),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.transparent,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.error,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.error,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            filled: true,
-            fillColor: const Color(0xFFCCF1CC),
-          ),
-          style: GoogleFonts.inter(),
-          cursorColor: Theme.of(context).textTheme.bodyLarge?.color,
-        ),
-      ),
 
             // Crop Care / AI Tools Toggle
             Padding(
@@ -146,8 +147,10 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const ChatBotWidget()),);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const HomepageAITools()),
+                          );
                         },
                         child: Container(
                           height: 54,

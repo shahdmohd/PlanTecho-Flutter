@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/SigningPages/Errorpopup.dart';
-import 'package:graduation_project/SigningPages/Login.dart';
+import 'package:graduation_project/SigningPages/LoginScreen.dart';
 
 class ResetPassword_P extends StatefulWidget {
   final String email;

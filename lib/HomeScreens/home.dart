@@ -87,7 +87,7 @@ class _HomeScreen extends State<HomeScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: Container(
+                    child: SizedBox(
                       width: 350,
                       child: TextFormField(
                         controller: _searchTextController,

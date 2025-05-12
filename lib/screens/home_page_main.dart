@@ -4,7 +4,6 @@ import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
 import 'package:graduation_project/PlantData/PlantManagementDashboard.dart';
 import 'package:graduation_project/HomeScreens/chatbot.dart';
 import 'package:graduation_project/HomeScreens/ProfilePage.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:graduation_project/HomeScreens/SettingsPage.dart';
 
 class HomePageMainWidget extends StatefulWidget {

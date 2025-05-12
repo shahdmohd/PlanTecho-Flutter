@@ -4,7 +4,6 @@ import 'package:graduation_project/SigningPages/ResetPassword.dart';
 import 'package:graduation_project/screens/home_page_main.dart';
 //import 'screens/camera_live_screen.dart';
 import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
-import 'package:graduation_project/HomeScreens/home.dart';
 import 'package:graduation_project/PlantData/CreateNewPlant.dart';
 import 'package:graduation_project/PlantData/DeletePlant.dart';
 import 'package:graduation_project/SigningPages/LoginScreen.dart';

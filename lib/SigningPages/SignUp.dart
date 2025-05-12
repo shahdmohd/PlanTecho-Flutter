@@ -9,6 +9,8 @@ import 'package:graduation_project/SigningPages/Errorpopup.dart';
 import 'package:graduation_project/SigningPages/LoginScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }

@@ -306,7 +306,7 @@ void _verifyCode(String code) {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: TextFormField(
                         controller: emailAddressTextController,

@@ -4,7 +4,9 @@ import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
 import 'package:graduation_project/PlantData/PlantManagementDashboard.dart';
 import 'package:graduation_project/HomeScreens/chatbot.dart';
 import 'package:graduation_project/HomeScreens/ProfilePage.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:graduation_project/HomeScreens/SettingsPage.dart';
+import 'package:graduation_project/PlantData/CreateNewPlant.dart';
 
 class HomePageMainWidget extends StatefulWidget {
   const HomePageMainWidget({super.key});
@@ -40,6 +42,17 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
       appBar: _buildAppBar(),
       body: _pages[_currentIndex],
       bottomNavigationBar: _buildBottomNavigationBar(),
+      floatingActionButton: _currentIndex == 0 ? FloatingActionButton(
+        backgroundColor: const Color(0xFF0AAD0A),
+        child: const Icon(Icons.add, color: Colors.white),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreateNewPlant()),
+          );
+        },
+      ) : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -88,7 +101,6 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
         elevation: 0,
       );
     } else if (_currentIndex == 3) {
-      // Settings page has its own app bar
       return null;
     } else {
       return AppBar(

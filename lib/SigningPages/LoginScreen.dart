@@ -88,10 +88,8 @@ class _LoginScreen extends State<LoginScreen> {
                       // Sign In Button
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            _createPageRoute(SignUpScreen()),
-                          );
+                          Navigator.pushNamed(context,'/home_main');
+                          
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF0AAD0A),

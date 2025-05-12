@@ -5,10 +5,10 @@ class ErrorMessagePopup extends StatelessWidget {
   final String description;
 
   const ErrorMessagePopup({
-    Key? key,
+    super.key,
     this.title = 'Error Message',
     this.description = 'Description of the message...',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

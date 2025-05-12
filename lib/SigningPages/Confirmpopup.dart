@@ -5,10 +5,10 @@ class Confirmpopup extends StatelessWidget {
   final String description;
 
   const Confirmpopup({
-    Key? key,
+    super.key,
     this.title = 'Confirmation Message',
     this.description = 'Description of the message...',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

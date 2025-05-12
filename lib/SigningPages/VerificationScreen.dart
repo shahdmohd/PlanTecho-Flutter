@@ -7,7 +7,7 @@ import 'package:graduation_project/SigningPages/Errorpopup.dart';
 class VerificationScreen extends StatefulWidget {
   final String email;
 
-  VerificationScreen({required this.email});
+  const VerificationScreen({super.key, required this.email});
 
   @override
   _VerificationScreenState createState() => _VerificationScreenState();

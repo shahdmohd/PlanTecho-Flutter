@@ -3,6 +3,8 @@ import 'package:video_player/video_player.dart';
 import 'package:http/http.dart' as http;
 
 class DeletePlant extends StatefulWidget {
+  const DeletePlant({super.key});
+
   @override
   _DeletePlant createState() => _DeletePlant();
 }

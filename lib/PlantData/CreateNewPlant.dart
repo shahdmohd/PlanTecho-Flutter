@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CreateNewPlant extends StatefulWidget {
+  const CreateNewPlant({super.key});
+
   @override
   _CreateNewPlantState createState() => _CreateNewPlantState();
 }
@@ -89,7 +91,7 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
       children: [
         Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
         SizedBox(height: 5),
-        Container(
+        SizedBox(
           height: 100,
           child: CupertinoPicker(
             scrollController: FixedExtentScrollController(initialItem: value),

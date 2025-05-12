@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/SigningPages/ForgetPassword.dart';
 import 'package:graduation_project/SigningPages/ResetPassword.dart';
-import 'package:graduation_project/screens/home_page_main.dart';
+import 'package:graduation_project/HomeScreens/home_page_main.dart';
 //import 'screens/camera_live_screen.dart';
 import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
 import 'package:graduation_project/HomeScreens/home.dart';
@@ -31,7 +31,7 @@ class PlanTecho extends StatelessWidget {
       // the next line is added
       //home: LiveDetectionScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/AITools',
+      initialRoute: '/splash',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/welcome1': (context) => const WelcomescreenMonitoringYourPlant(),

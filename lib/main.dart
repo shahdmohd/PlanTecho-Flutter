@@ -38,7 +38,6 @@ class PlanTecho extends StatelessWidget {
         '/welcome2': (context) => const WelcomescreenInfectedPlant(),
         '/welcome3': (context) => const WelcomescreenChatBot(),
         '/welcome4': (context) => const WelcomescreenPlanTecho(),
-        '/home': (context) => HomeScreen(),
         '/signup':(context)=> SignUpScreen(),
         '/login': (context) => LoginScreen(),
         '/forgetpassword':(context) => ForgetPasswordWidget(),

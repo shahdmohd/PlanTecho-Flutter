@@ -4,7 +4,6 @@ import 'package:graduation_project/SigningPages/ResetPassword.dart';
 import 'package:graduation_project/HomeScreens/home_page_main.dart';
 //import 'screens/camera_live_screen.dart';
 import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
-import 'package:graduation_project/HomeScreens/home.dart';
 import 'package:graduation_project/PlantData/CreateNewPlant.dart';
 import 'package:graduation_project/PlantData/DeletePlant.dart';
 import 'package:graduation_project/SigningPages/LoginScreen.dart';
@@ -16,6 +15,9 @@ import 'package:graduation_project/WelcomePages/Welcome3.dart';
 import 'package:graduation_project/WelcomePages/WelcomePlanTecho.dart';
 import 'package:graduation_project/PlantData/PlantManagementDashboard.dart';
 import 'package:graduation_project/HomeScreens/chatbot.dart';
+import 'package:graduation_project/HomeScreens/choose_way_of_detection.dart';
+//import 'package:graduation_project/screens/detection_screen.dart';
+
 
 void main() {
   runApp(const PlanTecho()); //running the app
@@ -38,7 +40,6 @@ class PlanTecho extends StatelessWidget {
         '/welcome2': (context) => const WelcomescreenInfectedPlant(),
         '/welcome3': (context) => const WelcomescreenChatBot(),
         '/welcome4': (context) => const WelcomescreenPlanTecho(),
-        '/home': (context) => HomeScreen(),
         '/signup':(context)=> SignUpScreen(),
         '/login': (context) => LoginScreen(),
         '/forgetpassword':(context) => ForgetPasswordWidget(),
@@ -55,7 +56,10 @@ class PlanTecho extends StatelessWidget {
         '/DeletePlant':(context) => DeletePlant(),
         '/plantDashboard':(context) => PlantManagementdashboardWidget(),
         //'/camera_live_screen':(context) =>LiveDetectionScreen(),
-        '/home_main':(context) => HomePageMainWidget()
+        '/home_main':(context) => HomePageMainWidget(),
+        '/choose_detection':(context) =>ChooseWidget(),
+        //'/Detect':(context) =>DetectionScreen(),
+
       }, //all screens
     );
   }

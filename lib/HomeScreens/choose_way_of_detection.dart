@@ -92,7 +92,7 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                     child: _selectedImage != null
                         ? Image.file(_selectedImage!, width: 300, height: 300, fit: BoxFit.cover)
                         : Image.asset(
-                            'assets/images/plant_detection.jpg',
+                            'assets/images/Plant-Pathology.png',
                             width: 300,
                             height: 300,
                             fit: BoxFit.cover,
@@ -177,7 +177,7 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () {
-                              Navigator.pushNamed(context, '/HomePageMainWidget');
+                              Navigator.pushNamed(context, '/home_main');
                             },
                             child: const Text(
                               'Return Home page ',

@@ -9,14 +9,14 @@ class PlantManagementdashboardWidget extends StatefulWidget {
       _PlantManagementdashboardWidgetState();
 }
 
-class _PlantManagementdashboardWidgetState 
+class _PlantManagementdashboardWidgetState
     extends State<PlantManagementdashboardWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
@@ -28,7 +28,7 @@ class _PlantManagementdashboardWidgetState
         ),
         actions: [],
         centerTitle: false,
-        elevation: 0,
+        elevation: 4,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -120,9 +120,7 @@ class _PlantManagementdashboardWidgetState
                         icon: Icons.delete_outline_outlined,
                         label: 'Delete',
                         color: const Color(0xFFFC0307),
-                        onPressed: () {
-                          // Show delete confirmation
-                        },
+                        onPressed: () => _showDeleteConfirmation(context),
                       ),
                     ],
                   ),
@@ -132,6 +130,26 @@ class _PlantManagementdashboardWidgetState
           ),
         ),
       ),
+    );
+  }
+
+  void _showDeleteConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          insetPadding: const EdgeInsets.all(20),
+          child: DeleteConfirmationPopup(
+            onConfirm: () {
+              Navigator.pop(context); // Close the dialog
+              // Add your delete logic here
+              Navigator.pop(context); // Optionally go back after deletion
+            },
+            onCancel: () => Navigator.pop(context),
+          ),
+        );
+      },
     );
   }
 
@@ -180,6 +198,101 @@ class _PlantManagementdashboardWidgetState
           color: Colors.white,
           fontWeight: FontWeight.w500,
         ),
+      ),
+    );
+  }
+}
+
+class DeleteConfirmationPopup extends StatelessWidget {
+  final VoidCallback onConfirm;
+  final VoidCallback onCancel;
+
+  const DeleteConfirmationPopup({
+    super.key,
+    required this.onConfirm,
+    required this.onCancel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 250,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Container(
+              width: 70,
+              height: 70,
+              decoration: const BoxDecoration(
+                color: Color(0xFFCCF1CC),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.warning_rounded,
+                color: Color(0xFF0AAD0A),
+                size: 35,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Text(
+              'Are you sure you want to delete all information about this plant?',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.inter(
+                fontSize: 16,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: onConfirm,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF0AAD0A),
+                    minimumSize: const Size(105, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(80),
+                    ),
+                  ),
+                  child: Text(
+                    'Yes',
+                    style: GoogleFonts.interTight(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: onCancel,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF6D6161),
+                    minimumSize: const Size(105, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(80),
+                    ),
+                  ),
+                  child: Text(
+                    'No',
+                    style: GoogleFonts.interTight(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

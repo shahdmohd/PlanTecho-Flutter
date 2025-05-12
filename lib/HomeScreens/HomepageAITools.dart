@@ -1,228 +1,198 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// Import your other pages if needed
-// Make sure the chatbot and detection pages are added in your project
-// and registered in main.dart routes
-// import 'detection_page.dart';
-
 class HomepageAITools extends StatefulWidget {
   const HomepageAITools({super.key});
 
-  static const String routeName = '/homepageAITools';
-
   @override
-  State<HomepageAITools> createState() => _HomepageAIToolsState();
+  State<HomepageAITools> createState() => _HomepageAITools();
 }
 
-class _HomepageAIToolsState extends State<HomepageAITools> {
+class _HomepageAITools extends State<HomepageAITools> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: Scaffold(
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final isSmallScreen = screenWidth < 600;
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios_rounded,
-              color: Color(0xFF0AAD0A),
-              size: 30,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: ImageIcon(
+            AssetImage('assets/icons/arrow_back.png'),
+            color: Color(0xFF0AAD0A),
+            size: 30,
           ),
-          elevation: 0,
+          onPressed: () => Navigator.pop(context),
         ),
-        body: SafeArea(
+        title: Text(
+          'AI Tools',
+          style: GoogleFonts.enriqueta(
+            color: const Color(0xFF026500),
+            fontWeight: FontWeight.bold,
+            fontSize: isSmallScreen ? 20 : 24,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+            padding: EdgeInsets.symmetric(
+              horizontal: isSmallScreen ? 16 : 32,
+              vertical: 16,
+            ),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(14),
-                  child: Container(
-                    width: 350,
-                    height: 54.8,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFCCF1CC),
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            // Navigator.pushNamed(context, '/home');
-                          },
+                // Top segmented control
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: 500),
+                  height: 55,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFCCF1CC),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => Navigator.pop(context),
                           child: Container(
-                            width: 175,
-                            height: 60,
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
                               borderRadius: BorderRadius.circular(14),
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'Crop Care',
-                                style: TextStyle(
-                                  fontFamily: 'Enriqueta',
-                                  color: Color(0xFF026500),
+                                style: GoogleFonts.enriqueta(
+                                  color: const Color(0xFF026500),
                                   fontWeight: FontWeight.bold,
+                                  fontSize: isSmallScreen ? 16 : 18,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-                          width: 170.8,
-                          height: 60,
+                      ),
+                      Expanded(
+                        child: Container(
                           decoration: BoxDecoration(
                             color: const Color(0xFF0AAD0A),
                             borderRadius: BorderRadius.circular(14),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               'AI Tools',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Enriqueta',
+                              style: GoogleFonts.enriqueta(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
+                                fontSize: isSmallScreen ? 16 : 18,
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 40),
-                Container(
-                  width: 328.7,
-                  height: 400.8,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                
+                SizedBox(height: isSmallScreen ? 30 : 40),
+                
+                // AI Tools cards
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final cardSize = constraints.maxWidth * 0.4;
+                    return Wrap(
+                      spacing: isSmallScreen ? 16 : 32,
+                      runSpacing: 32,
+                      alignment: WrapAlignment.center,
                       children: [
-                        // Chat Bot Section
-                        Column(
-                          children: [
-                            Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Container(
-                                  width: 146.91,
-                                  height: 146.91,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFCEF1CC),
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.only(start: 15),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset(
-                                      'assets/images/chatbot_1.png',
-                                      width: 120,
-                                      height: 120,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/chatbot');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF0AAD0A),
-                                minimumSize: const Size(111, 53),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18),
-                                ),
-                                elevation: 0,
-                              ),
-                              child: Text(
-                                'Chat Bot',
-                                style: GoogleFonts.interTight(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
+                        _buildAIToolCard(
+                          size: cardSize,
+                          imageAsset: 'assets/images/chatbot.png',
+                          label: 'ChatBot',
+                          onPressed: () {
+                             Navigator.pushNamed(context, '/chatbot');
+                          },
                         ),
-
-                        // Detection Section
-                        Column(
-                          children: [
-                            Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Container(
-                                  width: 146.91,
-                                  height: 146.91,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFCEF1CC),
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.only(start: 15),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image.asset(
-                                      'assets/images/disease_1.png',
-                                      width: 120,
-                                      height: 120,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/detection');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF0AAD0A),
-                                minimumSize: const Size(111, 53),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18),
-                                ),
-                                elevation: 0,
-                              ),
-                              child: Text(
-                                'Detection',
-                                style: GoogleFonts.interTight(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
+                        _buildAIToolCard(
+                          size: cardSize,
+                          imageAsset: 'assets/images/disease.png',
+                          label: 'Detection',
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/choose_detection');
+                          },
                         ),
                       ],
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildAIToolCard({
+    required double size,
+    required String imageAsset,
+    required String label,
+    required VoidCallback onPressed,
+  }) {
+    return SizedBox(
+      width: size,
+      child: Column(
+        children: [
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                width: size * 0.9,
+                height: size * 0.9,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFCEF1CC),
+                  shape: BoxShape.circle,
+                ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  imageAsset,
+                  width: size * 0.7,
+                  height: size * 0.7,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF0AAD0A),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text(
+                label,
+                style: GoogleFonts.interTight(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

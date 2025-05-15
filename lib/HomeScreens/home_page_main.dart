@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
@@ -7,7 +9,7 @@ import 'package:graduation_project/HomeScreens/ProfilePage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:graduation_project/HomeScreens/SettingsPage.dart';
 import 'package:graduation_project/PlantData/CreateNewPlant.dart';
-
+import "package:graduation_project/HomeScreens/DashboardForPlantWidget.dart";
 class HomePageMainWidget extends StatefulWidget {
   const HomePageMainWidget({super.key});
 
@@ -24,7 +26,7 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
   final List<Widget> _pages = [
     const HomeContent(),
     const ProfilePage(),
-    const ChatbotWidget(),
+    const PlantDashboardWidget(), 
     const SettingsPage(),
   ];
 
@@ -125,7 +127,7 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
       case 1:
         return 'Profile';
       case 2:
-        return 'Chat';
+        return 'Dashboard';
       default:
         return '';
     }
@@ -151,8 +153,8 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           label: 'Profile',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat),
-          label: 'Chat',
+          icon: Icon(Icons.eco), // Plant icon
+          label: 'Dashboard',      
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),

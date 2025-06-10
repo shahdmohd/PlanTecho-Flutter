@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/HomeScreens/home_page_main.dart'; // Import your home page widget
 
 class HomepageAITools extends StatefulWidget {
   const HomepageAITools({super.key});
@@ -21,12 +22,18 @@ class _HomepageAITools extends State<HomepageAITools> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: ImageIcon(
-            AssetImage('assets/icons/arrow_back.png'),
+          icon: Icon(
+            Icons.arrow_back,
             color: Color(0xFF0AAD0A),
             size: 30,
           ),
-          onPressed: () => Navigator.pop(context),
+          // Here's the fix: Navigate directly to HomePageMainWidget and clear navigation stack
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const HomePageMainWidget()),
+              (Route<dynamic> route) => false, // Remove all previous routes
+            );
+          },
         ),
         title: Text(
           'AI Tools',
@@ -61,7 +68,13 @@ class _HomepageAITools extends State<HomepageAITools> {
                     children: [
                       Expanded(
                         child: GestureDetector(
-                          onTap: () => Navigator.pop(context),
+                          // Here's the fix: Navigate directly to HomePageMainWidget
+                          onTap: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) => const HomePageMainWidget()),
+                              (Route<dynamic> route) => false, // Remove all previous routes
+                            );
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(14),
@@ -117,7 +130,7 @@ class _HomepageAITools extends State<HomepageAITools> {
                           imageAsset: 'assets/images/chatbot.png',
                           label: 'ChatBot',
                           onPressed: () {
-                             Navigator.pushNamed(context, '/chatbot');
+                            Navigator.pushNamed(context, '/chatbot');
                           },
                         ),
                         _buildAIToolCard(

@@ -8,31 +8,14 @@ class PlantDashboardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            color: Color(0xFF026500),
-            size: 30,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Dashboard',
-          style: GoogleFonts.interTight(
-            color: const Color(0xFF026500),
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-      ),
+      // Completely remove AppBar and rely on the page's own title handling
+      appBar: null,
       body: SafeArea(
         child: Column(
           children: [
+            // Top spacing - without any back button or header elements
+            SizedBox(height: 16),
+            
             // Plant selector and image
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -77,40 +60,49 @@ class PlantDashboardWidget extends StatelessWidget {
               ),
             ),
 
-            // Plant stats
+            // Plant stats - wrapped in Expanded + SingleChildScrollView
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // First row of stats
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildStatCard('Temperature °C', '21%'),
-                        _buildStatCard('Soil moisture %', '78%'),
-                      ],
-                    ),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, bottom: 80), // Added bottom padding for navbar
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const SizedBox(height: 10), // Top spacing
+                      // First row of stats
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          _buildStatCard('Temperature °C', '21%'),
+                          _buildStatCard('Soil moisture %', '78%'),
+                        ],
+                      ),
+                      const SizedBox(height: 15), // Spacing between rows
 
-                    // Second row of stats
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildStatCard('Humidity %', '25%'),
-                        _buildStatCard('Rain Fall %', '8%'),
-                      ],
-                    ),
+                      // Second row of stats
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          _buildStatCard('Humidity %', '25%'),
+                          _buildStatCard('Rain Fall %', '8%'),
+                        ],
+                      ),
+                      const SizedBox(height: 15), // Spacing between rows
 
-                    // Single wide stat card
-                    _buildStatCard('Soil moisture Status', 'wet', width: 241),
-                  ],
+                      // Single wide stat card
+                      Center(child: _buildStatCard('Soil moisture Status', 'wet', width: 241)),
+                      const SizedBox(height: 15), // Bottom spacing
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
         ),
       ),
+      // Important: Set bottomNavigationBar to null to let parent widget handle navigation
+      // This prevents duplicate navigation bars
+      bottomNavigationBar: null,
     );
   }
 

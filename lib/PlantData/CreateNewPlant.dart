@@ -29,37 +29,40 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTextField('Name', _nameController),
-            _buildNumberPicker('Temperature', _temperature, (value) {
-              setState(() => _temperature = value);
-            }),
-            _buildNumberPicker('Humidity', _humidity, (value) {
-              setState(() => _humidity = value);
-            }),
-            _buildNumberPicker('Water', _water, (value) {
-              setState(() => _water = value);
-            }),
-            _buildDropdownField('State', _states, _selectedState, (value) {
-              setState(() => _selectedState = value);
-            }),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildButton('Save', Colors.green, () {
-                  // Handle save action
-                }),
-                _buildButton('Cancel', Colors.brown, () {
-                  Navigator.pop(context);
-                }),
-              ],
-            )
-          ],
+      body: SingleChildScrollView(  // Added SingleChildScrollView here
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTextField('Name', _nameController),
+              _buildNumberPicker('Temperature', _temperature, (value) {
+                setState(() => _temperature = value);
+              }),
+              _buildNumberPicker('Humidity', _humidity, (value) {
+                setState(() => _humidity = value);
+              }),
+              _buildNumberPicker('Water', _water, (value) {
+                setState(() => _water = value);
+              }),
+              _buildDropdownField('State', _states, _selectedState, (value) {
+                setState(() => _selectedState = value);
+              }),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildButton('Save', Colors.green, () {
+                    // Handle save action
+                  }),
+                  _buildButton('Cancel', Colors.brown, () {
+                    Navigator.pop(context);
+                  }),
+                ],
+              ),
+              SizedBox(height: 20),  // Added extra padding at the bottom
+            ],
+          ),
         ),
       ),
     );

@@ -68,12 +68,11 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 10),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(22),
-            child: Image.network(
-              'https://images.unsplash.com/photo-1545830790-68595959c491?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNXx8ZmFybWVyfGVufDB8fHx8MTc0MzgwNjYzMHww&ixlib=rb-4.0.3&q=80&w=1080',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset(
+                      'assets/images/smart-farm.png',
+
+                      fit: BoxFit.contain,
+                    ),
           ),
         ),
         title: Align(
@@ -93,18 +92,19 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
         actions: [
           // Chatbot icon button
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 10, 10),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 10),
             child: Container(
               decoration: BoxDecoration(
                 color: const Color(0xFF0AAD0A),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(40),
               ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.smart_toy_rounded, // Chatbot icon
-                  color: Colors.white,
-                  size: 24,
-                ),
+            child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/chatbotIcon.png',
+                    fit: BoxFit.contain,
+                    // width: 24,
+                    // height: 24,
+                  ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -117,13 +117,15 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           ),
           // Notifications icon
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 10),
-            child: Icon(
-              Icons.notifications_rounded,
-              color: const Color(0xFF0AAD0A),
-              size: 30,
-            ),
-          ),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 5),
+            child: IconButton(
+             icon: Image.asset(
+                    'assets/icons/notification.png',
+                    fit: BoxFit.contain,
+            ), onPressed: () { 
+
+             },
+          ),),
         ],
         centerTitle: false,
         elevation: 0,

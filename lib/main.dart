@@ -33,7 +33,7 @@ class PlanTecho extends StatelessWidget {
       // the next line is added
       //home: LiveDetectionScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/splash',
+      initialRoute: '/home_main',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/welcome1': (context) => const WelcomescreenMonitoringYourPlant(),

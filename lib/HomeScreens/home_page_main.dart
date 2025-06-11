@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
+import 'package:graduation_project/HomeScreens/DiseaseDetectionPage.dart';
 import 'package:graduation_project/PlantData/PlantManagementDashboard.dart';
 import 'package:graduation_project/HomeScreens/chatbot.dart';
 import 'package:graduation_project/HomeScreens/ProfilePage.dart';
@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:graduation_project/HomeScreens/SettingsPage.dart';
 import 'package:graduation_project/PlantData/CreateNewPlant.dart';
 import "package:graduation_project/HomeScreens/DashboardForPlantWidget.dart";
+
 class HomePageMainWidget extends StatefulWidget {
   const HomePageMainWidget({super.key});
 
@@ -90,6 +91,31 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           ),
         ),
         actions: [
+          // Chatbot icon button
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 10, 10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFF0AAD0A),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.smart_toy_rounded, // Chatbot icon
+                  color: Colors.white,
+                  size: 24,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ChatbotWidget()),
+                  );
+                },
+                tooltip: 'Chat with AI Assistant',
+              ),
+            ),
+          ),
+          // Notifications icon
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 10),
             child: Icon(
@@ -249,7 +275,7 @@ class HomeContent extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const HomepageAITools()),
+                          MaterialPageRoute(builder: (context) => const DiseaseDetectionPage()),
                         );
                       },
                       child: Container(
@@ -260,7 +286,7 @@ class HomeContent extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            'AI Tools',
+                            'Plant Health',
                             style: GoogleFonts.enriqueta(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xFF026500),

@@ -3,7 +3,7 @@ import 'package:graduation_project/SigningPages/ForgetPassword.dart';
 import 'package:graduation_project/SigningPages/ResetPassword.dart';
 import 'package:graduation_project/HomeScreens/home_page_main.dart';
 //import 'screens/camera_live_screen.dart';
-import 'package:graduation_project/HomeScreens/HomepageAITools.dart';
+import 'package:graduation_project/HomeScreens/DiseaseDetectionPage.dart';
 import 'package:graduation_project/PlantData/CreateNewPlant.dart';
 import 'package:graduation_project/PlantData/DeletePlant.dart';
 import 'package:graduation_project/SigningPages/LoginScreen.dart';
@@ -50,7 +50,7 @@ class PlanTecho extends StatelessWidget {
             verificationCode: args['verificationCode'],
           );
         },
-        '/AITools':(context) => const HomepageAITools(),
+        '/AITools':(context) => const DiseaseDetectionPage(),
         '/chatbot':(context) => const ChatbotWidget(),
         '/CreateNewPlant':(context) => CreateNewPlant(),
         '/DeletePlant':(context) => DeletePlant(),

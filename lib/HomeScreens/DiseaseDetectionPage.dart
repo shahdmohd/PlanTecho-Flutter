@@ -65,12 +65,17 @@ class _DiseaseDetectionPageState extends State<DiseaseDetectionPage> {
     final isSmallScreen = screenWidth < 600;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F0FF),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF8F0FF),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.green),
+          icon: Image.asset(
+            'assets/icons/arrow_back.png', // Replace with your actual asset path
+            width: 24, // Adjust size as needed
+            height: 24,
+            color: Colors.green, // This will tint the image if it's a single color
+          ),
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (context) => const HomePageMainWidget()),
@@ -83,7 +88,7 @@ class _DiseaseDetectionPageState extends State<DiseaseDetectionPage> {
           style: GoogleFonts.inter(
             color: Colors.green,
             fontWeight: FontWeight.bold,
-            fontSize: isSmallScreen ? 20 : 24,
+            fontSize: isSmallScreen ? 20: 24,
           ),
         ),
         centerTitle: true,
@@ -279,10 +284,7 @@ class ImagePreviewScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.info_outline,
-                    color: Color(0xFF0AAD0A),
-                  ),
+                  
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
@@ -308,7 +310,6 @@ class ImagePreviewScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context); // Go back to select another image
                     },
-                    icon: const Icon(Icons.photo_library, color: Colors.white),
                     label: const Text(
                       'Select Another',
                       style: TextStyle(color: Colors.white, fontSize: 16),

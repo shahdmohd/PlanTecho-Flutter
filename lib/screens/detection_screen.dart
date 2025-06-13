@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CVNavigationScreen extends StatelessWidget {
-  final Uri _cvModelUri = Uri.parse('http://127.0.0.1:5000/');
+  final Uri _cvModelUri = Uri.parse('http://192.168.1.7:5000/');
+
 
   Future<void> _launchCVModel() async {
     if (await canLaunchUrl(_cvModelUri)) {
@@ -19,7 +20,7 @@ class CVNavigationScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: _launchCVModel,
-          child: Text("Click"),
+          child: Text("Start Live Detection"),
         ),
       ),
     );

@@ -14,23 +14,25 @@ class _PlantManagementdashboardWidgetState
     extends State<PlantManagementdashboardWidget> {
   @override
   Widget build(BuildContext context) {
-  Widget getCustomIcon(String assetPath, {double size = 24}) {
-  return ImageIcon(
-    AssetImage(assetPath),
-    size: size,
-  );
-}
+    Widget getCustomIcon(String assetPath, {double size = 24, Color? color}) {
+      return ImageIcon(
+        AssetImage(assetPath),
+        size: size,
+        color: color,
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: const ImageIcon(
-              AssetImage('assets/icons/arrow_back.png'),
-              color: Color(0xFF0AAD0A),
-              size: 30,
-            ),
+          icon: getCustomIcon(
+            'assets/icons/arrow_back.png',
+            size: 30,
+            color: const Color(0xFF0AAD0A),
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [],
@@ -63,10 +65,10 @@ class _PlantManagementdashboardWidgetState
                           Positioned(
                             left: 113,
                             top: 100,
-                            child: Icon(
-                              Icons.edit_rounded,
-                              color: const Color(0xFF026500),
+                            child: getCustomIcon(
+                              'assets/icons/edit_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Replace with your edit icon asset
                               size: 24,
+                              color: const Color(0xFF026500),
                             ),
                           ),
                         ],
@@ -115,21 +117,25 @@ class _PlantManagementdashboardWidgetState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                     _buildActionButton(
-                        icon: Icons.delete, // 👈 Add this line                      
+                      _buildActionButton(
+                        customIcon: getCustomIcon(
+                          'assets/icons/edit_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png',
+                          color: Colors.white,
+                        ),
                         label: 'Edit',
                         color: const Color(0xFF0AAD0A),
-                        customIcon: getCustomIcon('assets/icons/edit_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png'),
                         onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const EditPlant()),
-                            );
-                          },
-                        ),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const EditPlant()),
+                          );
+                        },
+                      ),
                       _buildActionButton(
-                        customIcon: getCustomIcon('assets/icons/delete_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1.png'),
-                        icon: Icons.delete, // 👈 Add this line
+                        customIcon: getCustomIcon(
+                          'assets/icons/delete_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1.png',
+                          color: Colors.white,
+                        ),
                         label: 'Delete',
                         color: const Color(0xFFFC0307),
                         onPressed: () => _showDeleteConfirmation(context),
@@ -188,10 +194,10 @@ class _PlantManagementdashboardWidgetState
   }
 
   Widget _buildActionButton({
-    required IconData icon,
+    required Widget customIcon,
     required String label,
     required Color color,
-    required VoidCallback onPressed, required Widget customIcon,
+    required VoidCallback onPressed,
   }) {
     return ElevatedButton.icon(
       onPressed: onPressed,
@@ -203,7 +209,7 @@ class _PlantManagementdashboardWidgetState
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16),
       ),
-      icon: Icon(icon, color: Colors.white),
+      icon: customIcon,
       label: Text(
         label,
         style: GoogleFonts.interTight(
@@ -224,6 +230,14 @@ class DeleteConfirmationPopup extends StatelessWidget {
     required this.onConfirm,
     required this.onCancel,
   });
+
+  Widget getCustomIcon(String assetPath, {double size = 24, Color? color}) {
+    return ImageIcon(
+      AssetImage(assetPath),
+      size: size,
+      color: color,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -246,10 +260,10 @@ class DeleteConfirmationPopup extends StatelessWidget {
                 color: Color(0xFFCCF1CC),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.warning_rounded,
-                color: Color(0xFF0AAD0A),
+              child: getCustomIcon(
+                'assets/icons/warning.png', // Replace with your warning icon asset
                 size: 35,
+                color: const Color(0xFF0AAD0A),
               ),
             ),
           ),

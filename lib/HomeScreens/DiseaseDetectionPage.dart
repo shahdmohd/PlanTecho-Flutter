@@ -102,7 +102,7 @@ class _DiseaseDetectionPageState extends State<DiseaseDetectionPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DetectionScreen()),
+                    MaterialPageRoute(builder: (context) => CVNavigationScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

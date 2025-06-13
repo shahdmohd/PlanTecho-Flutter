@@ -59,7 +59,7 @@ class PlanTecho extends StatelessWidget {
         //'/camera_live_screen':(context) =>LiveDetectionScreen(),
         '/home_main':(context) => HomePageMainWidget(),
         '/choose_detection':(context) =>ChooseWidget(),
-        '/Detect':(context) =>DetectionScreen(),
+        '/Detect':(context) =>CVNavigationScreen(),
 
       }, //all screens
     );

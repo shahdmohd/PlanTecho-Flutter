@@ -37,33 +37,33 @@ class SettingsPage extends StatelessWidget {
             
             _buildSectionTitle('Account'),
             _buildSettingsItem(
-              icon: Icons.subscriptions,
+              icon: 'assets/icons/subscriptions_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
               title: 'My Subscription',
             ),
             _buildSettingsItem(
-              icon: Icons.help_outline,
+              icon: 'assets/icons/contact_support_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
               title: 'Getting Started',
             ),
             
             const SizedBox(height: 24),
             _buildSectionTitle('About'),
             _buildSettingsItem(
-              icon: Icons.info_outline,
+              icon: 'assets/icons/info_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
               title: 'About Us',
             ),
             _buildSettingsItem(
-              icon: Icons.help_center_outlined,
+              icon: 'assets/icons/contact_support_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
               title: 'Help',
             ),
             
             const SizedBox(height: 24),
             _buildSectionTitle('Legal'),
             _buildSettingsItem(
-              icon: Icons.privacy_tip_outlined,
+              icon: 'assets/icons/privacy_tip_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
               title: 'Privacy Policy',
             ),
             _buildSettingsItem(
-              icon: Icons.description_outlined,
+              icon: 'assets/icons/description_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
               title: 'Terms & Conditions',
             ),
             
@@ -127,11 +127,16 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildSettingsItem({
-    required IconData icon,
+    required String icon, // Changed from IconData to String
     required String title,
   }) {
     return ListTile(
-      leading: Icon(icon, color: const Color(0xFF0AAD0A)),
+      leading: Image.asset(
+        icon,
+        width: 24,
+        height: 24,
+        color: const Color(0xFF0AAD0A),
+      ),
       title: Text(
         title,
         style: GoogleFonts.inter(
@@ -139,7 +144,12 @@ class SettingsPage extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
       ),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+      trailing: Image.asset(
+        'assets/icons/arrow_forward_ios_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Using your custom arrow icon
+        width: 16,
+        height: 16,
+        color: Colors.grey,
+      ),
       onTap: () {
         // Add navigation functionality for each item
       },
@@ -151,17 +161,17 @@ class SettingsPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          icon: const Icon(Icons.facebook, size: 32, color: Color(0xFF0AAD0A)),
+          icon: Image.asset('assets/icons/FB.png', width: 32, height: 32),
           onPressed: () {},
         ),
         const SizedBox(width: 16),
         IconButton(
-          icon: Image.asset('assets/images/twitter.png', width: 32, height: 32),
+          icon: Image.asset('assets/icons/whatsapp.png', width: 32, height: 32),
           onPressed: () {},
         ),
         const SizedBox(width: 16),
         IconButton(
-          icon: Image.asset('assets/images/instagram.png', width: 32, height: 32),
+          icon: Image.asset('assets/icons/insta.png', width: 32, height: 32),
           onPressed: () {},
         ),
       ],

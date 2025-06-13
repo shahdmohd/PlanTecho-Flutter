@@ -16,6 +16,7 @@ import 'package:graduation_project/WelcomePages/WelcomePlanTecho.dart';
 import 'package:graduation_project/PlantData/PlantManagementDashboard.dart';
 import 'package:graduation_project/HomeScreens/chatbot.dart';
 import 'package:graduation_project/HomeScreens/choose_way_of_detection.dart';
+import 'package:graduation_project/screens/detection_screen.dart';
 //import 'package:graduation_project/screens/detection_screen.dart';
 
 
@@ -33,7 +34,7 @@ class PlanTecho extends StatelessWidget {
       // the next line is added
       //home: LiveDetectionScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home_main',
+      initialRoute: '/splash',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/welcome1': (context) => const WelcomescreenMonitoringYourPlant(),
@@ -58,7 +59,7 @@ class PlanTecho extends StatelessWidget {
         //'/camera_live_screen':(context) =>LiveDetectionScreen(),
         '/home_main':(context) => HomePageMainWidget(),
         '/choose_detection':(context) =>ChooseWidget(),
-        //'/Detect':(context) =>DetectionScreen(),
+        '/Detect':(context) =>DetectionScreen(),
 
       }, //all screens
     );

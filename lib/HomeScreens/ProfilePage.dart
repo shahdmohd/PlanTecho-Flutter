@@ -48,7 +48,7 @@ class ProfilePage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
                           child: Image.asset(
-                            'assets/images/farmer.jpg',
+                            'assets/images/Farmer.jpg',
                             width: 60,
                             height: 60,
                             fit: BoxFit.cover,

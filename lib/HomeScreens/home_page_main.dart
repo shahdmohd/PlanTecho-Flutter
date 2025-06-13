@@ -45,16 +45,24 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
       appBar: _buildAppBar(),
       body: _pages[_currentIndex],
       bottomNavigationBar: _buildBottomNavigationBar(),
-      floatingActionButton: _currentIndex == 0 ? FloatingActionButton(
-        backgroundColor: const Color(0xFF0AAD0A),
-        child: const Icon(Icons.add, color: Colors.white),
+    floatingActionButton: _currentIndex == 0
+    ? FloatingActionButton(
+        backgroundColor: Colors.white,
+        elevation: 3,
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const CreateNewPlant()),
           );
         },
-      ) : null,
+        child: Image.asset(
+          'assets/icons/add_circle_26dp_0AAD0A_FILL0_wght0_GRAD0_opsz24 2 (1).png', 
+          width: 32,
+          height: 32,
+        ),
+      )
+    : null,
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

@@ -116,7 +116,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
           backgroundColor: const Color(0x600DDC49),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_rounded, color: Color(0xFF0AAD0A)),
-            onPressed: () => Navigator.pushNamed(context, '/AITools'),
+            onPressed: () => Navigator.pop(context, 'HomePageMainWidget'),
           ),
           centerTitle: true,
           title: const Text(

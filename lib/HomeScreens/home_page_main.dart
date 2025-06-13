@@ -69,10 +69,9 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(22),
             child: Image.asset(
-                      'assets/images/smart-farm.png',
-
-                      fit: BoxFit.contain,
-                    ),
+              'assets/images/Farmer.jpg',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         title: Align(
@@ -80,7 +79,7 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
             child: Text(
-              'Hello Chiong!',
+              'Hello Gomaa!',
               style: GoogleFonts.enriqueta(
                 fontWeight: FontWeight.w800,
                 color: const Color(0xFF026500),
@@ -98,13 +97,11 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
                 color: const Color(0xFF0AAD0A),
                 borderRadius: BorderRadius.circular(40),
               ),
-            child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/chatbotIcon.png',
-                    fit: BoxFit.contain,
-                    // width: 24,
-                    // height: 24,
-                  ),
+              child: IconButton(
+                icon: Image.asset(
+                  'assets/images/chatbotIcon.png',
+                  fit: BoxFit.contain,
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -119,13 +116,15 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 5),
             child: IconButton(
-             icon: Image.asset(
-                    'assets/icons/notification.png',
-                    fit: BoxFit.contain,
-            ), onPressed: () { 
-
-             },
-          ),),
+              icon: Image.asset(
+                'assets/icons/notification.png',
+                fit: BoxFit.contain,
+              ), 
+              onPressed: () { 
+                // Add notification functionality here
+              },
+            ),
+          ),
         ],
         centerTitle: false,
         elevation: 0,
@@ -171,21 +170,41 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
       unselectedItemColor: Colors.grey,
       selectedLabelStyle: GoogleFonts.inter(fontSize: 12),
       unselectedLabelStyle: GoogleFonts.inter(fontSize: 12),
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Image.asset(
+            'assets/icons/home_26dp_0AAD0A_FILL0_wght0_GRAD0_opsz24 1.png',
+            width: 24,
+            height: 24,
+            color: _currentIndex == 0 ? const Color(0xFF0AAD0A) : Colors.grey,
+          ),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: Image.asset(
+            'assets/icons/person_26dp_9EEF9E_FILL0_wght0_GRAD0_opsz24 1.png',
+            width: 24,
+            height: 24,
+            color: _currentIndex == 1 ? const Color(0xFF0AAD0A) : Colors.grey,
+          ),
           label: 'Profile',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.eco), // Plant icon
-          label: 'Dashboard',      
+          icon: Image.asset(
+            'assets/icons/monitoring_26dp_9EEF9E_FILL0_wght0_GRAD0_opsz24 1.png',
+            width: 24,
+            height: 24,
+            color: _currentIndex == 2 ? const Color(0xFF0AAD0A) : Colors.grey,
+          ),
+          label: 'Dashboard',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
+          icon: Image.asset(
+            'assets/icons/settings (2) 1.png',
+            width: 24,
+            height: 24,
+            color: _currentIndex == 3 ? const Color(0xFF0AAD0A) : Colors.grey,
+          ),
           label: 'Settings',
         ),
       ],
@@ -242,7 +261,6 @@ class HomeContent extends StatelessWidget {
               cursorColor: Theme.of(context).textTheme.bodyLarge?.color,
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(16),
             child: Container(
@@ -302,7 +320,6 @@ class HomeContent extends StatelessWidget {
               ),
             ),
           ),
-
           GridView.count(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

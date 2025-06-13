@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/PlantData/EditPlant.dart';
 import 'package:graduation_project/SigningPages/ForgetPassword.dart';
 import 'package:graduation_project/SigningPages/ResetPassword.dart';
 import 'package:graduation_project/HomeScreens/home_page_main.dart';
 //import 'screens/camera_live_screen.dart';
 import 'package:graduation_project/HomeScreens/DiseaseDetectionPage.dart';
 import 'package:graduation_project/PlantData/CreateNewPlant.dart';
-import 'package:graduation_project/PlantData/DeletePlant.dart';
+//import 'package:graduation_project/deleted/DeletePlant.dart';
 import 'package:graduation_project/SigningPages/LoginScreen.dart';
 import 'package:graduation_project/SigningPages/SignUp.dart';
 import 'package:graduation_project/SplashScreen.dart';
@@ -34,7 +35,7 @@ class PlanTecho extends StatelessWidget {
       // the next line is added
       //home: LiveDetectionScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/splash',
+      initialRoute: '/home_main',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/welcome1': (context) => const WelcomescreenMonitoringYourPlant(),
@@ -54,12 +55,13 @@ class PlanTecho extends StatelessWidget {
         '/AITools':(context) => const DiseaseDetectionPage(),
         '/chatbot':(context) => const ChatbotWidget(),
         '/CreateNewPlant':(context) => CreateNewPlant(),
-        '/DeletePlant':(context) => DeletePlant(),
+        //'/DeletePlant':(context) => DeletePlant(),
         '/plantDashboard':(context) => PlantManagementdashboardWidget(),
         //'/camera_live_screen':(context) =>LiveDetectionScreen(),
         '/home_main':(context) => HomePageMainWidget(),
         '/choose_detection':(context) =>ChooseWidget(),
         '/Detect':(context) =>CVNavigationScreen(),
+        '/EditPlant':(context) =>EditPlant(),
 
       }, //all screens
     );

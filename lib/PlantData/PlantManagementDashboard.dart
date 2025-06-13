@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/PlantData/EditPlant.dart';
 
 class PlantManagementdashboardWidget extends StatefulWidget {
   const PlantManagementdashboardWidget({super.key});
@@ -13,17 +14,23 @@ class _PlantManagementdashboardWidgetState
     extends State<PlantManagementdashboardWidget> {
   @override
   Widget build(BuildContext context) {
+  Widget getCustomIcon(String assetPath, {double size = 24}) {
+  return ImageIcon(
+    AssetImage(assetPath),
+    size: size,
+  );
+}
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            color: Color(0xFF0AAD0A),
-            size: 30,
-          ),
+          icon: const ImageIcon(
+              AssetImage('assets/icons/arrow_back.png'),
+              color: Color(0xFF0AAD0A),
+              size: 30,
+            ),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [],
@@ -108,16 +115,21 @@ class _PlantManagementdashboardWidgetState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildActionButton(
-                        icon: Icons.mode_edit_outline_rounded,
+                     _buildActionButton(
+                        icon: Icons.delete, // 👈 Add this line                      
                         label: 'Edit',
                         color: const Color(0xFF0AAD0A),
+                        customIcon: getCustomIcon('assets/icons/edit_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1.png'),
                         onPressed: () {
-                          // Navigate to edit screen
-                        },
-                      ),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const EditPlant()),
+                            );
+                          },
+                        ),
                       _buildActionButton(
-                        icon: Icons.delete_outline_outlined,
+                        customIcon: getCustomIcon('assets/icons/delete_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1 1.png'),
+                        icon: Icons.delete, // 👈 Add this line
                         label: 'Delete',
                         color: const Color(0xFFFC0307),
                         onPressed: () => _showDeleteConfirmation(context),
@@ -179,7 +191,7 @@ class _PlantManagementdashboardWidgetState
     required IconData icon,
     required String label,
     required Color color,
-    required VoidCallback onPressed,
+    required VoidCallback onPressed, required Widget customIcon,
   }) {
     return ElevatedButton.icon(
       onPressed: onPressed,

@@ -99,15 +99,15 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           _buildSettingsItem(
-            icon: Icons.person_rounded,
+            icon: 'assets/icons/person_26dp_9EEF9E_FILL0_wght0_GRAD0_opsz24 1.png', // Updated to use your custom icon
             title: 'Personal Information',
           ),
           _buildSettingsItem(
-            icon: Icons.language_outlined,
+            icon: 'assets/icons/language_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
             title: 'Country',
           ),
           _buildSettingsItem(
-            icon: Icons.notifications_none,
+            icon: 'assets/icons/notifications_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
             title: 'Notification Settings',
           ),
           const Padding(
@@ -121,15 +121,15 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           _buildSettingsItem(
-            icon: Icons.help_outline_rounded,
+            icon: 'assets/icons/contact_support_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
             title: 'Support',
           ),
           _buildSettingsItem(
-            icon: Icons.privacy_tip_rounded,
+            icon: 'assets/icons/privacy_tip_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
             title: 'Terms of Service',
           ),
           _buildSettingsItem(
-            icon: Icons.ios_share,
+            icon: 'assets/icons/ios_share_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Updated to use your custom icon
             title: 'Invite Friends',
             iconColor: Colors.grey,
             arrowColor: Colors.grey,
@@ -140,7 +140,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _buildSettingsItem({
-    required IconData icon,
+    required String icon, // Changed from IconData to String for asset path
     required String title,
     Color iconColor = const Color(0xFF0AAD0A),
     Color arrowColor = const Color(0xFF0AAD0A),
@@ -166,10 +166,11 @@ class ProfilePage extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Icon(
+              Image.asset(
                 icon,
+                width: 24,
+                height: 24,
                 color: iconColor,
-                size: 24,
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -180,10 +181,11 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Icon(
-                Icons.arrow_forward_ios,
+              Image.asset(
+                'assets/icons/arrow_forward_ios_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png', // Using your custom arrow icon
+                width: 18,
+                height: 18,
                 color: arrowColor,
-                size: 18,
               ),
             ],
           ),

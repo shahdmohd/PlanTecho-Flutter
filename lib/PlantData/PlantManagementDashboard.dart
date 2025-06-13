@@ -119,7 +119,7 @@ class _PlantManagementdashboardWidgetState
                         icon: Icons.delete, // 👈 Add this line                      
                         label: 'Edit',
                         color: const Color(0xFF0AAD0A),
-                        customIcon: getCustomIcon('assets/icons/edit_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1.png'),
+                        customIcon: getCustomIcon('assets/icons/edit_24dp_48752C_FILL0_wght400_GRAD0_opsz24.png'),
                         onPressed: () {
                             Navigator.push(
                               context,
@@ -128,7 +128,7 @@ class _PlantManagementdashboardWidgetState
                           },
                         ),
                       _buildActionButton(
-                        customIcon: getCustomIcon('assets/icons/delete_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1 1.png'),
+                        customIcon: getCustomIcon('assets/icons/delete_24dp_FFFFFFFF_FILL1_wght600_GRAD0_opsz24 1.png'),
                         icon: Icons.delete, // 👈 Add this line
                         label: 'Delete',
                         color: const Color(0xFFFC0307),

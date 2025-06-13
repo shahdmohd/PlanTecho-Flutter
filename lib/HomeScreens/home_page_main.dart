@@ -47,7 +47,7 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
       bottomNavigationBar: _buildBottomNavigationBar(),
     floatingActionButton: _currentIndex == 0
     ? FloatingActionButton(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 14, 176, 27),
         elevation: 3,
         onPressed: () {
           Navigator.push(
@@ -56,7 +56,7 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
           );
         },
         child: Image.asset(
-          'assets/icons/add_circle_26dp_0AAD0A_FILL0_wght0_GRAD0_opsz24 2 (1).png', 
+          'assets/icons/add_43dp_F3F3F3_FILL0_wght400_GRAD0_opsz40.png', 
           width: 32,
           height: 32,
         ),

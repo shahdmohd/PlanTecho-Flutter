@@ -29,7 +29,7 @@ class ErrorMessagePopup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
-                'images/atention1.png',
+                'assets/images/images (1).png',
                 width: 50,
                 height: 50,
               ),

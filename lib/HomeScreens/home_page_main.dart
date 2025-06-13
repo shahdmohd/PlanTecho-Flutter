@@ -102,12 +102,12 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
             padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 10),
             child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xFF0AAD0A),
+                color: const Color.fromARGB(255, 246, 255, 246),
                 borderRadius: BorderRadius.circular(40),
               ),
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/chatbotIcon.png',
+                  'assets/icons/bott.png',
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {

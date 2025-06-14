@@ -25,7 +25,7 @@ class _PlantManagementdashboardWidgetState
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: getCustomIcon(
@@ -261,7 +261,7 @@ class DeleteConfirmationPopup extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: getCustomIcon(
-                'assets/icons/warning.png', // Replace with your warning icon asset
+                'assets/icons/warning_48dp_3CB734_FILL0_wght400_GRAD0_opsz48.png', // Replace with your warning icon asset
                 size: 35,
                 color: const Color(0xFF0AAD0A),
               ),

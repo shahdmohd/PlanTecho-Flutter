@@ -10,10 +10,10 @@ class EditPlant extends StatefulWidget {
 
 class _EditPlantState extends State<EditPlant> {
   final TextEditingController _nameController = TextEditingController();
-  int _temperature = 0;
-  int _humidity = 0;
-  int _water = 0;
-  String? _selectedState;
+  int _temperature = 21;
+  int _humidity = 25;
+  int _water = 78;
+  String? _selectedState = 'Wet'; // Set default state to 'Wet'
   
   final List<String> _states = ['Dry', 'Optimal', 'Wet'];
 
@@ -28,8 +28,16 @@ class _EditPlantState extends State<EditPlant> {
         backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
+        leading: IconButton(
+          icon: Image.asset(
+            'assets/icons/arrow_back.png', // Back arrow icon from assets
+            width: 24,
+            height: 24,
+          ), // Back arrow icon from assets
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      body: SingleChildScrollView(  // Added SingleChildScrollView here
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -37,10 +45,10 @@ class _EditPlantState extends State<EditPlant> {
             children: [
               _buildTextField('Name', _nameController),
               _buildNumberPicker('Temperature', _temperature, (value) {
-                setState(() => _temperature = value);
+                setState(() => _temperature = 21);
               }),
               _buildNumberPicker('Humidity', _humidity, (value) {
-                setState(() => _humidity = value);
+                setState(() => _humidity = 25);
               }),
               _buildNumberPicker('Water', _water, (value) {
                 setState(() => _water = value);
@@ -60,7 +68,7 @@ class _EditPlantState extends State<EditPlant> {
                   }),
                 ],
               ),
-              SizedBox(height: 20),  // Added extra padding at the bottom
+              SizedBox(height: 20),
             ],
           ),
         ),
@@ -119,12 +127,19 @@ class _EditPlantState extends State<EditPlant> {
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             filled: true,
             fillColor: Colors.green.shade50,
+            suffixIcon: Image.asset(
+              'assets/icons/drop-down.png', // Dropdown icon from assets
+              width: 24,
+              height: 24,
+              color:  Colors.black,
+            ),
           ),
           value: selectedValue,
           items: options.map((option) {
             return DropdownMenuItem(value: option, child: Text(option));
           }).toList(),
           onChanged: onChanged,
+          icon: Container(), // Remove the default dropdown icon
         ),
         SizedBox(height: 10),
       ],

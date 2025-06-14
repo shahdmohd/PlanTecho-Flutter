@@ -33,7 +33,7 @@ class PlantDashboardWidget extends StatelessWidget {
                     ),
                     child: DropdownButton<String>(
                       value: 'Tomato',
-                      icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                      icon: Image.asset('assets/icons/drop-down.png',color: Colors.black),
                       isExpanded: true,
                       underline: const SizedBox(),
                       items: ['Tomato', 'Option 2', 'Option 3'].map((String value) {
@@ -49,8 +49,8 @@ class PlantDashboardWidget extends StatelessWidget {
                   // Plant image
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      'https://images.unsplash.com/photo-1582284540020-8acbe03f4924?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwyfHxUb21hdG98ZW58MHx8fHwxNzQ0MTQ3MTc4fDA&ixlib=rb-4.0.3&q=80&w=1080',
+                    child: Image.asset(
+                      'assets/images/tomato.png',
                       width: 70,
                       height: 70,
                       fit: BoxFit.cover,

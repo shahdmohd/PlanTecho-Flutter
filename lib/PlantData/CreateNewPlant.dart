@@ -13,7 +13,7 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
   int _temperature = 0;
   int _humidity = 0;
   int _water = 0;
-  String? _selectedState;
+  String? _selectedState = 'Choose';
   
   final List<String> _states = ['Dry', 'Optimal', 'Wet'];
 
@@ -28,6 +28,14 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
         backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
+        leading: IconButton(
+          icon: Image.asset(
+            'assets/icons/arrow_back.png', // Back arrow icon from assets
+            width: 24,
+            height: 24,
+          ), // Back arrow icon from assets
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: SingleChildScrollView(  // Added SingleChildScrollView here
         child: Padding(
@@ -108,7 +116,7 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
     );
   }
 
-  Widget _buildDropdownField(String label, List<String> options, String? selectedValue, Function(String?) onChanged) {
+Widget _buildDropdownField(String label, List<String> options, String? selectedValue, Function(String?) onChanged) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -119,17 +127,25 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             filled: true,
             fillColor: Colors.green.shade50,
+            suffixIcon: Image.asset(
+              'assets/icons/drop-down.png', // Dropdown icon from assets
+              width: 24,
+              height: 24,
+              color:  Colors.black,
+            ),
           ),
           value: selectedValue,
           items: options.map((option) {
             return DropdownMenuItem(value: option, child: Text(option));
           }).toList(),
           onChanged: onChanged,
+          icon: Container(), // Remove the default dropdown icon
         ),
         SizedBox(height: 10),
       ],
     );
   }
+
 
   Widget _buildButton(String text, Color color, VoidCallback onPressed) {
     return ElevatedButton(

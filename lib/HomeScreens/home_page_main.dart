@@ -108,8 +108,9 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
               ),
               child: IconButton(
                 icon: Image.asset(
-                  'assets/icons/bott.png',
+                  'assets/images/chatbotIcon.png',
                   fit: BoxFit.contain,
+                  color: const Color.fromARGB(255, 14, 176, 27),
                 ),
                 onPressed: () {
                   Navigator.push(

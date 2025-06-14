@@ -68,6 +68,7 @@ class _HomePageMainWidgetState extends State<HomePageMainWidget> {
   }
 
   AppBar? _buildAppBar() {
+    
     if (_currentIndex == 0) {
       return AppBar(
         backgroundColor: Colors.white,

@@ -19,10 +19,9 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
   bool _isListening = false;
   final List<Map<String, String>> _messages = [];
 
-  // Gemini 2.0 Flash API Endpoint
-  static const String _geminiApiUrl =
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
-  static const String _apiKey = 'AIzaSyDDEtWj89nBj82DUys8fE-cO63NDjDaBvU'; // Replace if needed
+  // Gemini API configuration (keep your existing)
+  static const String _geminiApiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+  static const String _apiKey = 'AIzaSyDDEtWj89nBj82DUys8fE-cO63NDjDaBvU';
 
   @override
   void initState() {
@@ -39,7 +38,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
   }
 
   Future<void> _speak(String text) async {
-    await _flutterTts.setLanguage("en-US"); // Change to "ar" for Arabic
+    await _flutterTts.setLanguage("en-US");
     await _flutterTts.setPitch(1);
     await _flutterTts.speak(text);
   }
@@ -97,8 +96,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return data['candidates'][0]['content']['parts'][0]['text'] ??
-            "No response from Gemini.";
+        return data['candidates'][0]['content']['parts'][0]['text'] ?? "No response from Gemini.";
       } else {
         return "Error: ${response.statusCode} - ${response.body}";
       }
@@ -115,7 +113,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
         appBar: AppBar(
           backgroundColor: const Color(0x600DDC49),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_rounded, color: Color(0xFF0AAD0A)),
+            icon: Image.asset('assets/icons/arrow_back.png'), // Using one of your icons as back button
             onPressed: () => Navigator.pop(context, 'HomePageMainWidget'),
           ),
           centerTitle: true,
@@ -174,25 +172,37 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  IconButton(
-                    onPressed: _isListening ? _stopListening : _startListening,
-                    icon: Icon(_isListening ? Icons.mic_off : Icons.mic),
-                    color: Colors.white,
-                    iconSize: 24,
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(Color(0xE62EC859)),
-                      shape: WidgetStateProperty.all(CircleBorder()),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xE62EC859),
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: _isListening ? _stopListening : _startListening,
+                      icon: Image.asset(
+                        'assets/icons/mic_25dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png', // Using notification icon as mic
+                        width: 24,
+                        height: 24,
+                        color: Colors.white,
+                      ),
+                      iconSize: 24,
                     ),
                   ),
                   const SizedBox(width: 8),
-                  IconButton(
-                    onPressed: _handleSend,
-                    icon: const Icon(Icons.send),
-                    color: Colors.white,
-                    iconSize: 24,
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(Color(0xE62EC859)),
-                      shape: WidgetStateProperty.all(CircleBorder()),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xE62EC859),
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: _handleSend,
+                      icon: Image.asset(
+                        'assets/icons/send_25dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png', // Using your send icon
+                        width: 24,
+                        height: 24,
+                        color: Colors.white,
+                      ),
+                      iconSize: 24,
                     ),
                   ),
                 ],

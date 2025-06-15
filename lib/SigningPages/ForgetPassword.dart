@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'lib/SigningPages/ResetPasswordWidget.dart';
- import 'ResetPassword.dart' ;
+import 'ResetPassword.dart';
+
 class ForgetPasswordWidget extends StatefulWidget {
   const ForgetPasswordWidget({super.key});
 
@@ -11,15 +11,9 @@ class ForgetPasswordWidget extends StatefulWidget {
 
 class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  
-  // Controller and focus node for the email text field
   TextEditingController? emailAddressTextController;
   FocusNode? emailAddressFocusNode;
-  
-  // Controller for verification code
   TextEditingController? verificationCodeController;
-  
-  // Focus node to unfocus when tapping outside
   final unfocusNode = FocusNode();
 
   @override
@@ -39,7 +33,6 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
     super.dispose();
   }
 
-  // Responsive visibility helper
   bool responsiveVisibility({
     required BuildContext context,
     bool phone = true,
@@ -51,7 +44,6 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
     return true;
   }
 
-  // Show verification code dialog
   void _showVerificationDialog() {
     showDialog(
       context: context,
@@ -92,16 +84,11 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Colors.grey.shade300,
-                      width: 2,
-                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(
                       color: Color(0xFF0AAD0A),
-                      width: 2,
                     ),
                   ),
                 ),
@@ -112,7 +99,6 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                // Resend code logic would go here
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('New code sent to your email')),
                 );
@@ -134,7 +120,6 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                   );
                   return;
                 }
-                
                 Navigator.of(context).pop();
                 _verifyCode(verificationCodeController!.text);
               },
@@ -161,36 +146,24 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
     );
   }
 
-  // Method to verify the code
-  // Method to verify the code
-// In the _ForgetPasswordWidgetState class
-// Update the _verifyCode method to navigate to the Reset Password page
-
-void _verifyCode(String code) {
-  // Here you would typically verify the code with your backend
-  // For demonstration, we'll show a success message
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text('Verification successful! Please reset your password.'),
-      duration: Duration(seconds: 2),
-    ),
-  );
-
-  // Navigate to the Reset Password page
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => ResetPasswordWidget(
-        email: emailAddressTextController!.text,
-        verificationCode: code,
+  void _verifyCode(String code) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Verification successful! Please reset your password.'),
+        duration: Duration(seconds: 2),
       ),
-    ),
-  );
-}
+    );
 
-// Make sure to import the ResetPasswordWidget at the top of your file
-// Add this import statement at the top of the ForgetPasswordWidget file:
-// import 'reset_password_widget.dart';  // Adjust path if necessary
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResetPasswordWidget(
+          email: emailAddressTextController!.text,
+          verificationCode: code,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,10 +184,11 @@ void _verifyCode(String code) {
             child: Align(
               alignment: AlignmentDirectional(-1, -1),
               child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_rounded,
+                icon: Image.asset(
+                  'assets/images/arrow_back.png', // Custom back arrow icon
+                  width: 24,
+                  height: 24,
                   color: Colors.black,
-                  size: 30,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -241,7 +215,6 @@ void _verifyCode(String code) {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // This row exists for when the "app bar" is hidden on desktop
                   if (responsiveVisibility(
                     context: context,
                     phone: false,
@@ -258,10 +231,11 @@ void _verifyCode(String code) {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
-                              child: Icon(
-                                Icons.arrow_back_rounded,
+                              child: Image.asset(
+                                'assets/icons/arrow_back.png', // Custom back arrow icon
+                                width: 24,
+                                height: 24,
                                 color: Colors.black,
-                                size: 24,
                               ),
                             ),
                             Padding(
@@ -395,7 +369,6 @@ void _verifyCode(String code) {
                             );
                             return;
                           }
-                          // Show verification dialog
                           _showVerificationDialog();
                         },
                         style: ElevatedButton.styleFrom(

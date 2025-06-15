@@ -1,10 +1,7 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project/SigningPages/Confirmpopup.dart';
 import 'package:graduation_project/SigningPages/SignUp.dart';
-import 'package:graduation_project/SigningPages/ForgetPassword.dart'; // Import the ForgetPassword widget
+import 'package:graduation_project/SigningPages/ForgetPassword.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreen extends State<LoginScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool isPasswordVisible = false; // State variable for password visibility
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +34,10 @@ class _LoginScreen extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 71),
-                  // Logo and Title Section
                   const Column(
                     children: [
                       Image(
-                        image: AssetImage(
-                          'assets/images/leaves-of-a-plant 2.png',
-                        ),
+                        image: AssetImage('assets/images/leaves-of-a-plant 2.png'),
                       ),
                       SizedBox(height: 10),
                       Text(
@@ -77,7 +71,6 @@ class _LoginScreen extends State<LoginScreen> {
                     ],
                   ),
                   const SizedBox(height: 40),
-                  // Input Fields
                   Column(
                     children: [
                       _buildTextField('Email', usernameController),
@@ -85,11 +78,9 @@ class _LoginScreen extends State<LoginScreen> {
                       _buildPasswordField('Password', passwordController),
                       const SizedBox(height: 15),
                       const SizedBox(height: 20),
-                      // Sign In Button
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context,'/home_main');
-                          
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF0AAD0A),
@@ -109,12 +100,11 @@ class _LoginScreen extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      // Forget Password
                       TextButton(
                         onPressed: () {
                           Navigator.push(
                             context,
-                            _createPageRoute(ForgetPasswordWidget()), // Use the ForgetPasswordWidget here
+                            _createPageRoute(ForgetPasswordWidget()),
                           );
                         },
                         child: const Text(
@@ -128,7 +118,6 @@ class _LoginScreen extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 80),
-                      // Sign Up Section
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -143,7 +132,6 @@ class _LoginScreen extends State<LoginScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              // navigate to sign up page (sign-up button)
                               Navigator.push(
                                 context,
                                 _createPageRoute(SignUpScreen()),
@@ -198,10 +186,7 @@ class _LoginScreen extends State<LoginScreen> {
     );
   }
 
-  Widget _buildPasswordField(
-    String placeholder,
-    TextEditingController controller,
-  ) {
+  Widget _buildPasswordField(String placeholder, TextEditingController controller) {
     return Container(
       height: 48,
       decoration: BoxDecoration(
@@ -213,7 +198,7 @@ class _LoginScreen extends State<LoginScreen> {
           Expanded(
             child: TextField(
               controller: controller,
-              obscureText: !isPasswordVisible, // Toggle obscureText
+              obscureText: !isPasswordVisible,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: placeholder,
@@ -223,20 +208,25 @@ class _LoginScreen extends State<LoginScreen> {
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF7A7A7A),
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               ),
             ),
           ),
-          IconButton(
-            icon: Icon(
-              isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-              color: const Color(0xFF7A7A7A),
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              icon: Image.asset(
+                'assets/icons/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png',
+                width: 24,
+                height: 24,
+                color: const Color(0xFF7A7A7A),
+              ),
+              onPressed: () {
+                setState(() {
+                  isPasswordVisible = !isPasswordVisible;
+                });
+              },
             ),
-            onPressed: () {
-              setState(() {
-                isPasswordVisible = !isPasswordVisible;
-              });
-            },
           ),
         ],
       ),
@@ -251,35 +241,12 @@ class _LoginScreen extends State<LoginScreen> {
         const end = Offset.zero;
         const curve = Curves.easeInOut;
 
-        var tween = Tween(
-          begin: begin,
-          end: end,
-        ).chain(CurveTween(curve: curve));
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         var offsetAnimation = animation.drive(tween);
 
         return SlideTransition(position: offsetAnimation, child: child);
       },
       transitionDuration: const Duration(milliseconds: 300),
     );
-  }
-
-  void _showDoneDialog(BuildContext context, String Ti, String message) {
-    bool dialogOpen = true;
-
-    // Show the dialog
-    showDialog(
-      context: context,
-      builder: (context) => Confirmpopup(title: Ti, description: message),
-    ).then((_) {
-      // When the dialog is dismissed manually, set dialogOpen to false
-      dialogOpen = false;
-    });
-
-    // Dismiss the dialog automatically after 2.5 seconds
-    Future.delayed(const Duration(seconds: 2, milliseconds: 500), () {
-      if (dialogOpen) {
-        Navigator.of(context).pop(); // Dismiss the dialog only if still open
-      }
-    });
   }
 }

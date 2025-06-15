@@ -13,9 +13,9 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
   int _temperature = 0;
   int _humidity = 0;
   int _water = 0;
-  String? _selectedState = 'Add';
+  String? _selectedState; // Changed: Set to null initially
   
-  final List<String> _states = ['Dry', 'Optimal', 'Wet'];
+  final List<String> _states = ['Dry', 'Optimal', 'Wet']; // Make sure these are unique
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,7 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
     );
   }
 
-Widget _buildDropdownField(String label, List<String> options, String? selectedValue, Function(String?) onChanged) {
+  Widget _buildDropdownField(String label, List<String> options, String? selectedValue, Function(String?) onChanged) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -127,16 +127,20 @@ Widget _buildDropdownField(String label, List<String> options, String? selectedV
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             filled: true,
             fillColor: Colors.green.shade50,
+            hintText: 'Select $label', // Added hint text
             suffixIcon: Image.asset(
               'assets/icons/drop-down.png', // Dropdown icon from assets
               width: 24,
               height: 24,
-              color:  Colors.black,
+              color: Colors.black,
             ),
           ),
           value: selectedValue,
           items: options.map((option) {
-            return DropdownMenuItem(value: option, child: Text(option));
+            return DropdownMenuItem<String>( // Explicitly specify type
+              value: option, 
+              child: Text(option)
+            );
           }).toList(),
           onChanged: onChanged,
           icon: Container(), // Remove the default dropdown icon
@@ -145,7 +149,6 @@ Widget _buildDropdownField(String label, List<String> options, String? selectedV
       ],
     );
   }
-
 
   Widget _buildButton(String text, Color color, VoidCallback onPressed) {
     return ElevatedButton(

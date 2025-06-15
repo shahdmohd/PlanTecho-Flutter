@@ -80,7 +80,7 @@ class _DiseaseDetectionPageState extends State<DiseaseDetectionPage>
 
   // Method to launch live detection URL
   Future<void> _launchLiveDetectionURL() async {
-    final Uri url = Uri.parse('http://192.168.1.7:5000');
+    final Uri url = Uri.parse('http://127.0.0.1:5000');
     try {
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);

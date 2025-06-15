@@ -26,6 +26,7 @@ dependencies:
   speech_to_text: ^7.0.0
   cached_network_image: ^3.4.1
   url_launcher: ^6.3.1
+  webview_flutter: ^4.13.0
   # Option 2 (comment out if using Option 1):
   # speech_to_text_macos: ^1.0.0
   # Option 3 (comment out if using Options 1 or 2):

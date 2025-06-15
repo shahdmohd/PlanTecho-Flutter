@@ -35,7 +35,7 @@ class PlanTecho extends StatelessWidget {
       // the next line is added
       //home: LiveDetectionScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home_main',
+      initialRoute: '/splash',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/welcome1': (context) => const WelcomescreenMonitoringYourPlant(),
@@ -60,7 +60,7 @@ class PlanTecho extends StatelessWidget {
         //'/camera_live_screen':(context) =>LiveDetectionScreen(),
         '/home_main':(context) => HomePageMainWidget(),
         '/choose_detection':(context) =>ChooseWidget(),
-        '/Detect':(context) =>CVNavigationScreen(),
+        '/Detect':(context) =>CVModelWebView(),
         '/EditPlant':(context) =>EditPlant(),
 
       }, //all screens

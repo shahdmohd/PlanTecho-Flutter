@@ -13,7 +13,7 @@ class _CreateNewPlantState extends State<CreateNewPlant> {
   int _temperature = 0;
   int _humidity = 0;
   int _water = 0;
-  String? _selectedState = 'Choose';
+  String? _selectedState = 'Add';
   
   final List<String> _states = ['Dry', 'Optimal', 'Wet'];
 
